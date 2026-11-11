@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = [
+  {
+    slug: 'signs-water-heater-needs-replacement',
+    title: '5 Signs Your Water Heater May Need Replacement',
+    description: 'Learn the common warning signs that a water heater is nearing the end of its useful life and when repair may no longer be the best option.',
+    pubDate: '2025-09-12',
+  },
+  {
+    slug: 'tankless-vs-tank-water-heaters',
+    title: 'Tankless vs. Traditional Tank Water Heaters: A Practical Comparison',
+    description: 'A clear look at the differences between tankless and conventional tank water heaters to help Mooresville homeowners choose what fits their needs.',
+    pubDate: '2025-10-03',
+  },
+];
+---
+
+<BaseLayout
+  title="Water Heater Tips & Guides | Blog"
+  description="Helpful articles about water heater repair, replacement, maintenance, and choosing between tank and tankless systems for Mooresville homeowners."
+>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span>/</span> <span>Blog</span>
+      </nav>
+      <h1>Water Heater Tips & Guides</h1>
+      <p>Practical information to help you understand and care for your water heater.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="blog-grid">
+        {posts.map((post) => (
+          <article class="blog-card">
+            <div class="blog-card-body">
+              <time datetime={post.pubDate}>
+                {new Date(post.pubDate + 'T12:00:00').toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </time>
+              <h2>
+                <a href={`/blog/${post.slug}/`}>{post.title}</a>
+              </h2>
+              <p>{post.description}</p>
+              <a href={`/blog/${post.slug}/`}>Read more →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

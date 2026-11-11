@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { services } from '../data/services';
+import { areas } from '../data/areas';
+
+const featuredServices = services.slice(0, 6);
+const featuredAreas = areas.slice(0, 8);
+---
+
+<BaseLayout
+  title="Water Heater Repair in Mooresville NC"
+  description="Professional water heater repair, installation, and maintenance in Mooresville, NC and Lake Norman communities. Fast, friendly service for gas, electric, and tankless units."
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1>Water Heater Repair in Mooresville, NC</h1>
+      <p>
+        When hot water stops, daily life gets complicated. We provide dependable repair,
+        installation, and maintenance for homes and small businesses across Mooresville
+        and the Lake Norman area.
+      </p>
+      <div class="hero-actions">
+        <a href="tel:+17045550123" class="btn btn-primary">Call (704) 555-0123</a>
+        <a href="/contact/" class="btn btn-secondary">Request Service</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services overview -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Water Heater Services</h2>
+      <p class="section-subtitle">
+        From emergency repairs to efficient new installations, we handle the full range of
+        residential and light commercial water heater needs.
+      </p>
+      <div class="grid-3">
+        {featuredServices.map((s) => (
+          <article class="card">
+            <h3><a href={`/services/${s.slug}/`}>{s.title}</a></h3>
+            <p>{s.shortDesc}</p>
+            <a href={`/services/${s.slug}/`} class="btn btn-outline">Learn more</a>
+          </article>
+        ))}
+      </div>
+      <p class="text-center mt-4">
+        <a href="/services/" class="btn btn-primary">View All Services</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Trust section -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Why Homeowners Call Us</h2>
+      <p class="section-subtitle">
+        Straightforward service focused on clear communication and solid workmanship.
+      </p>
+      <div class="trust-grid">
+        <div class="trust-item">
+          <strong>Local Focus</strong>
+          <span>Based in Mooresville and serving the Lake Norman region</span>
+        </div>
+        <div class="trust-item">
+          <strong>Clear Pricing</strong>
+          <span>Upfront discussion of options before work begins</span>
+        </div>
+        <div class="trust-item">
+          <strong>All Common Types</strong>
+          <span>Gas, electric, tank, and tankless systems</span>
+        </div>
+        <div class="trust-item">
+          <strong>Respectful Service</strong>
+          <span>Clean work habits and careful attention to your home</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews (no fake stats or specific claims) -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">What Customers Say</h2>
+      <p class="section-subtitle">
+        Feedback from local homeowners who have used our water heater services.
+      </p>
+      <div class="grid-3">
+        <div class="review-card">
+          <div class="stars" aria-label="5 stars">★★★★★</div>
+          <p>
+            “Our water heater failed on a weekend. The technician explained the issue clearly
+            and had us back to hot water the same day. Professional and easy to work with.”
+          </p>
+          <div class="author">— Homeowner in Mooresville</div>
+        </div>
+        <div class="review-card">
+          <div class="stars" aria-label="5 stars">★★★★★</div>
+          <p>
+            “We needed a tankless unit installed. The process was organized from start to finish,
+            and they answered every question about sizing and maintenance.”
+          </p>
+          <div class="author">— Homeowner near Lake Norman</div>
+        </div>
+        <div class="review-card">
+          <div class="stars" aria-label="5 stars">★★★★★</div>
+          <p>
+            “Straightforward diagnosis and fair recommendation. No pressure to replace when
+            a repair made more sense. Appreciate the honest approach.”
+          </p>
+          <div class="author">— Homeowner in Davidson</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service areas preview -->
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Areas We Serve</h2>
+      <p class="section-subtitle">
+        Proudly serving Mooresville and nearby communities around Lake Norman.
+      </p>
+      <div class="areas-grid">
+        {featuredAreas.map((a) => (
+          <a href={`/areas/${a.slug}/`} class="area-link">{a.name}</a>
+        ))}
+      </div>
+      <p class="text-center mt-4">
+        <a href="/areas/" class="btn btn-outline">See All Service Areas</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Need Hot Water Restored?</h2>
+      <p>
+        Call us for repair, replacement, or a maintenance visit. We are ready to help
+        Mooresville and Lake Norman homeowners.
+      </p>
+      <a href="tel:+17045550123" class="btn btn-primary">Call (704) 555-0123</a>
+      <a href="/contact/" class="btn btn-secondary" style="margin-left: 0.75rem;">Send a Message</a>
+    </div>
+  </section>
+</BaseLayout>

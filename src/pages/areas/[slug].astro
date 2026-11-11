@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { areas, getAreaBySlug } from '../../data/areas';
+import { services } from '../../data/services';
+
+export function getStaticPaths() {
+  return areas.map((a) => ({
+    params: { slug: a.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const area = getAreaBySlug(slug!);
+
+if (!area) {
+  return Astro.redirect('/404');
+}
+
+const relatedServices = services.slice(0, 6);
+---
+
+<BaseLayout
+  title={`Water Heater Repair in ${area.name}, NC`}
+  description={`Professional water heater repair, installation, and maintenance in ${area.name}. Serving homes near Mooresville and Lake Norman.`}
+>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span>/</span>
+        <a href="/areas/">Service Areas</a> <span>/</span>
+        <span>{area.name}</span>
+      </nav>
+      <h1>Water Heater Service in {area.name}</h1>
+      <p>{area.description}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="prose">
+        <p>
+          Residents and property owners in {area.name} rely on consistent hot water for
+          daily comfort. Whether you need a quick repair, a full replacement, or routine
+          maintenance, our team is familiar with the homes and systems common in this area.
+        </p>
+        <p>
+          We work on gas and electric tank-style units as well as tankless systems. From
+          diagnosing a pilot that will not stay lit to installing a more efficient new
+          water heater, we focus on clear communication and careful workmanship.
+        </p>
+
+        <h2>Popular Services in {area.name}</h2>
+        <ul>
+          {relatedServices.map((s) => (
+            <li><a href={`/services/${s.slug}/`}>{s.title}</a></li>
+          ))}
+        </ul>
+        <p><a href="/services/">View all water heater services →</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Schedule Service in {area.name}</h2>
+      <p>Call or use our contact form to request a visit.</p>
+      <a href="tel:+17045550123" class="btn btn-primary">Call (704) 555-0123</a>
+      <a href="/contact/" class="btn btn-secondary" style="margin-left: 0.75rem;">Contact Us</a>
+    </div>
+  </section>
+</BaseLayout>

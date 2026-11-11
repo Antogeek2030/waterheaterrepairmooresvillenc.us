@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { areas } from '../../data/areas';
+---
+
+<BaseLayout
+  title="Water Heater Service Areas Near Mooresville NC"
+  description="We provide water heater repair and installation throughout Mooresville, Lake Norman, Davidson, Cornelius, Huntersville, and nearby communities."
+>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span>/</span> <span>Service Areas</span>
+      </nav>
+      <h1>Service Areas</h1>
+      <p>
+        Based in Mooresville, we serve homes and light commercial properties across the
+        Lake Norman region and nearby towns.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="areas-grid">
+        {areas.map((a) => (
+          <a href={`/areas/${a.slug}/`} class="area-link">{a.name}</a>
+        ))}
+      </div>
+      <div class="prose mt-4">
+        <p>
+          Not sure if we cover your neighborhood? Give us a call. We regularly travel to
+          surrounding communities and can usually accommodate requests within a reasonable
+          distance of Mooresville.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Need Service in Your Area?</h2>
+      <p>Contact us to confirm availability and schedule a visit.</p>
+      <a href="tel:+17045550123" class="btn btn-primary">Call (704) 555-0123</a>
+    </div>
+  </section>
+</BaseLayout>

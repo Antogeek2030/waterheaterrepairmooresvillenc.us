@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { services } from '../../data/services';
+---
+
+<BaseLayout
+  title="Water Heater Services in Mooresville NC"
+  description="Browse our full list of water heater repair, installation, maintenance, and specialty services for homes in Mooresville and the Lake Norman area."
+>
+  <section class="page-hero">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> <span>/</span> <span>Services</span>
+      </nav>
+      <h1>Water Heater Services</h1>
+      <p>
+        From emergency repairs to efficient new installations and preventive maintenance,
+        we offer complete water heater support for Mooresville and nearby communities.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid-3">
+        {services.map((s) => (
+          <article class="card">
+            <h2 style="font-size: 1.2rem;"><a href={`/services/${s.slug}/`}>{s.title}</a></h2>
+            <p>{s.shortDesc}</p>
+            <a href={`/services/${s.slug}/`} class="btn btn-outline">Details</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Not Sure Which Service You Need?</h2>
+      <p>Describe the problem and we will help you figure out the right next step.</p>
+      <a href="tel:+17045550123" class="btn btn-primary">Call (704) 555-0123</a>
+      <a href="/contact/" class="btn btn-secondary" style="margin-left: 0.75rem;">Contact Form</a>
+    </div>
+  </section>
+</BaseLayout>
